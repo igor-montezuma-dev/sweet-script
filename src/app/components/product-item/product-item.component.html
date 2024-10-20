@@ -1,0 +1,13 @@
+<div class="content gap-4">
+  <div class="flex flex-col">
+    <img [src]="productImage()" [alt]="productName()" />
+    <app-button class="ml-14 -mt-6" />
+  </div>
+  <div class="w-full flex flex-col gap-1">
+    <h2>{{ productCategory() }}</h2>
+    <p class="text-xl font-semibold">{{ productName() }}</p>
+    <p class="text-primary-green-dark font-medium">
+      {{ productPrice() | currency : "BRL" }}
+    </p>
+  </div>
+</div>
