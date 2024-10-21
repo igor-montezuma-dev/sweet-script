@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { CartComponent } from '../../components/cart-items/cart.component';
 import { ProductsListComponent } from '../../components/products-list/products-list.component';
 import { IProduct } from '../../models/product';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ProductsListComponent],
+  imports: [ProductsListComponent, CartComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

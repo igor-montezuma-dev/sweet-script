@@ -1,0 +1,30 @@
+<main class="w-full bg-white p-4">
+  <h1 class="font-bold text-xl text-primary-green-dark">
+    Seus itens ({{ quantity }})
+  </h1>
+  <div class="w-full flex flex-col">
+    @for (item of cart; track item.items) {
+    <app-cart-item
+      [name]="item.name"
+      [unityPrice]="item.unityPrice"
+      [multipliedPrice]="item.multipliedPrice"
+      [quantity]="item.quantity"
+    />
+    <hr />
+    }
+  </div>
+
+  <div class="flex items-center justify-between">
+    <p>Total</p>
+    <h1 class="text-3xl font-bold">{{ total | currency }}</h1>
+  </div>
+
+  <div class="carbon-free">
+    <img src="assets/svg/icon-carbon-neutral.svg" alt="" />
+    <h1>Esta é uma entrega <span>livre de carbono</span></h1>
+  </div>
+
+  <div class="flex items-center justify-center mt-2">
+    <button class="confirm-btn">Confirmar Pedido</button>
+  </div>
+</main>
