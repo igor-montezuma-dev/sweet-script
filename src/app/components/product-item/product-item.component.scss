@@ -1,0 +1,12 @@
+.content {
+  width: 350px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+
+  img {
+   
+    object-fit: cover;
+    border-radius: 10px;
+  }
+}
