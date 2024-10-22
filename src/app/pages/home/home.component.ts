@@ -1,21 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { AsyncPipe, CommonModule } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
+import { map, shareReplay } from 'rxjs';
 import { CartComponent } from '../../components/cart-items/cart.component';
 import { ProductsListComponent } from '../../components/products-list/products-list.component';
+import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
 import { IProduct } from '../../models/product';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ProductsListComponent, CartComponent],
+  imports: [
+    CommonModule,
+    ProductsListComponent,
+    CartComponent,
+    ToolbarComponent,
+    AsyncPipe,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export default class HomeComponent implements OnInit {
+  private breakpointObserver: BreakpointObserver = inject(BreakpointObserver);
+
   productItems: IProduct[] = [];
 
   ngOnInit(): void {
     this.fetchProducts();
   }
+
+  public isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
+    map((result) => result.matches),
+    shareReplay()
+  );
 
   public fetchProducts(): void {
     this.productItems = [

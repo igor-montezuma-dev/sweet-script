@@ -1,8 +1,13 @@
+@if (isHandset$ | async) {
+<app-toolbar />
+}
 <main class="p-4 bg-cream">
-  <div class="w-full flex justify-center items-start gap-7 relative">
+  <div class="flex justify-center items-start gap-7 relative">
     <app-products-list [products]="productItems" />
+    @if (!(isHandset$ | async)) {
     <div class="sticky top-4 flex-grow">
       <app-cart />
     </div>
+    }
   </div>
 </main>
