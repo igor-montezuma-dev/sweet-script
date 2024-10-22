@@ -1,4 +1,22 @@
-<button class="btn">
-  <img src="assets/svg/icon-add-to-cart.svg" alt="Adicionar ao carrinho" />
-  Adicionar ao carrinho
-</button>
+<div class="flex-items-center justify-center">
+  @if (addedToCart) {
+  <div
+    class="border rounded-full px-3 py-2.5 w-full text-white bg-primary-green-dark"
+  >
+    <div class="flex justify-between items-center gap-2">
+      <mat-icon class="cursor-pointer" (click)="decrement()"
+        >do_not_disturb_on</mat-icon
+      >
+      <p>{{ count }}</p>
+      <mat-icon class="cursor-pointer" (click)="increment()"
+        >add_circle</mat-icon
+      >
+    </div>
+  </div>
+  } @else {
+  <button class="btn" (click)="addToCart()">
+    <img src="assets/svg/icon-add-to-cart.svg" alt="Adicionar ao carrinho" />
+    Adicionar ao carrinho
+  </button>
+  }
+</div>
